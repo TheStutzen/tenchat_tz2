@@ -69,8 +69,8 @@ docker compose down
 
 ## Авторы
 
-- [Ваше имя](https://github.com/TheStutzen) - разработка приложения
-- [Ваше имя](https://github.com/TheStutzen) - разработка документации
+- [Максим](https://github.com/TheStutzen) - разработка приложения
+- [Максим](https://github.com/TheStutzen) - разработка документации
 
 ## Ссылки
 
