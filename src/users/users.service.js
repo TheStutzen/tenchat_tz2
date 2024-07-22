@@ -1,5 +1,5 @@
 const db = require('../../database/db');
-const { validateUserData } = require('../../utils/validator')
+const { validateUserData, checkBalance } = require('../../utils/validator')
 
 const createUser = async (userData) => {
 
@@ -50,9 +50,15 @@ const deleteUser = async (id) => {
 
 
 const deposit = async (id, params) => {
+    const checkArgs = checkBalance(params)
+
+    if (!checkArgs.ok) {
+        return { message: 'Поле balance должно быть числом' }
+    }
+
     const user = await db.User.findByPk(id);
+    
     if (user) {
-        
         const amount = user.balance + params.balance
 
         const hasUpdate = await user.update({balance: amount});
@@ -64,6 +70,12 @@ const deposit = async (id, params) => {
 };
 
 const deduct = async (id, params) => {
+    const checkArgs = checkBalance(params)
+
+    if (!checkArgs.ok) {
+        return { message: 'Поле balance должно быть числом' }
+    }
+    
     const user = await db.User.findByPk(id);
 
     if (user) {

@@ -21,5 +21,16 @@ const validateUserData = (userData) => {
     }
 }
 
-module.exports = { validateUserData };
+const checkBalance = (params) => {
+    const { balance } = params
+
+    if (typeof(balance) !== 'number') {
+        return { ok: false }
+    }
+
+    return { ok: true, balance }
+    
+}
+
+module.exports = { validateUserData, checkBalance };
 
