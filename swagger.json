@@ -36,8 +36,8 @@
             }
           ],
           "responses": {
-            "200": {
-              "description": "{user}"
+            "201": {
+              "description": "user"
             },
             "400": {
               "description": "Почта уже занята"
