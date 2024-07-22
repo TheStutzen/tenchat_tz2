@@ -1,0 +1,26 @@
+{
+  "name": "tz2",
+  "version": "1.0.0",
+  "description": "tz",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "migrate": "node database/umzug.js up",
+    "migrate:create": "node umzug migrate:create --name",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "maxim gladkov",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.12",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "swagger-express-router": "^1.0.1",
+    "swagger-ui-express": "^5.0.1",
+    "umzug": "^3.8.1",
+    "validator": "^13.12.0"
+  }
+}

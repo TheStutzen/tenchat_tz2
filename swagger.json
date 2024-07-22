@@ -1,0 +1,240 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "TenChat.TZ(backend)",
+      "description": "",
+      "version": "0.0.1"
+    },
+    "produces": ["application/json"],
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+      "/users": {
+        "post": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "Create user",
+          "tags": ["Users"],
+          "description": "Create User",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "example@example.com"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Maxim"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{user}"
+            },
+            "400": {
+              "description": "Почта уже занята"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "get": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "Find user",
+          "tags": ["Users"],
+          "description": "Find User",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "number",
+              "example": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "{user}"
+            },
+            "404": {
+              "description": "Пользователь не найден"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "patch": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "Update user",
+          "tags": ["Users"],
+          "description": "Update User",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "number",
+              "example": 1
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "example@example.com"
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Maxim"
+                  },
+                  "balance": {
+                    "type": "number",
+                    "example": 10000
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User successfully updated"
+            },
+            "404": {
+              "description": "Пользователь не найден"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "Delete user",
+          "tags": ["Users"],
+          "description": "Delete User",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "number",
+              "example": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Пользователь успешно удален"
+            },
+            "404": {
+              "description": "Пользователь не найден. Либо удален"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+        },
+        "/users/deposit/{id}": {
+        "patch": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "deposit user",
+          "tags": ["Users"],
+          "description": "deposit User",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "number",
+              "example": 1
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "balance": {
+                    "type": "number",
+                    "example": 10000
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Успешно пополнен баланс, balance:"
+            },
+            "400": {
+              "description": "Что-то пошло не так'"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+        },
+        "/users/deduct/{id}": {
+        "patch": {
+          "api-router-controller": "middleware-name1",
+          "operationId": "deduct user",
+          "tags": ["Users"],
+          "description": "deduct User",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "number",
+              "example": 1
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "balance": {
+                    "type": "number",
+                    "example": 10000
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Успешно списан баланс, balance:"
+            },
+            "402": {
+              "description": "Списание не удалось. Деньги кончились"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      
+    }
+    }
+  }
+  
